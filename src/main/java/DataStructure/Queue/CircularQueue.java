@@ -65,9 +65,7 @@ public class CircularQueue {
     public boolean isFull() {
         return ((tail + 1) % size) == head;
     }
-}
 
-class runCircularQueue {
     public static void main(String[] args) {
         int queueSize = 3;
         if (args.length > 0) {
