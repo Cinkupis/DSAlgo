@@ -1,4 +1,4 @@
-package DataStructure.Queue;
+package DataStructures.Queue;
 
 public class CircularQueue {
     /** Initialize your data structure here. Set the size of the queue to be k. */

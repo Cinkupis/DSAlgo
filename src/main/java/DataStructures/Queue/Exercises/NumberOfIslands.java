@@ -1,4 +1,4 @@
-package DataStructure.Queue.Exercises;
+package DataStructures.Queue.Exercises;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -20,6 +20,7 @@ import java.util.LinkedList;
 //
 //        Output:3
 //----------------
+
 public class NumberOfIslands {
     public int numIslands(char[][] grid) {
         short islandCount = 0;

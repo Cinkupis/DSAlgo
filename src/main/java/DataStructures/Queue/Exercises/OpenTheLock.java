@@ -1,4 +1,4 @@
-package DataStructure.Queue.Exercises;
+package DataStructures.Queue.Exercises;
 
 //        --------------------------------------------------------------------------------------------------------------
 //        Input: deadends = ["0201","0101","0102","1212","2002"], target = "0202"
