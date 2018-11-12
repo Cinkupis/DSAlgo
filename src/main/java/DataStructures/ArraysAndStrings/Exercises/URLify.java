@@ -1,5 +1,10 @@
 package DataStructures.ArraysAndStrings.Exercises;
 
+/*
+    Write a method to replace all spaces in a char array with '%20'. You may assume that the char array has sufficient
+    space at the end to hold the additional characters, and that you are given the "true" length of the string.
+    Do not use Java Strings.
+ */
 public class URLify {
     private String urlify(char[] originalString, int actualLength) {
         int spaceCount = 0;
