@@ -1,7 +1,4 @@
-package DataStructures.ArraysAndStrings.Exercises;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+package DataStructures._Exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.

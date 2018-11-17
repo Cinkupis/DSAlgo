@@ -1,4 +1,4 @@
-package DataStructures.ArraysAndStrings.Exercises;
+package DataStructures._Exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     Implement a method to perform basic string compression using the counts of repeated characters. For example,

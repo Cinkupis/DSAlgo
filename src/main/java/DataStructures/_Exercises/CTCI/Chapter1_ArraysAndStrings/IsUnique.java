@@ -1,4 +1,4 @@
-package DataStructures.ArraysAndStrings.Exercises;
+package DataStructures._Exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional

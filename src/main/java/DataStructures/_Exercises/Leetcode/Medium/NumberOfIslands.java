@@ -1,4 +1,4 @@
-package DataStructures.Queue.Exercises;
+package DataStructures._Exercises.Leetcode.Medium;
 
 import java.awt.*;
 import java.util.LinkedList;

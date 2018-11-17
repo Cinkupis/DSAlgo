@@ -1,4 +1,4 @@
-package DataStructures.ArraysAndStrings.Exercises;
+package DataStructures._Exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate

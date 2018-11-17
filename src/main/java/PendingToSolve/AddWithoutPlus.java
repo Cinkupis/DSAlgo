@@ -1,4 +1,4 @@
-package CTCIHardExercises;
+package PendingToSolve;
 
 public class AddWithoutPlus {
 

@@ -1,6 +1,4 @@
-package DataStructures.ArraysAndStrings.Exercises;
-
-import java.util.HashMap;
+package DataStructures._Exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     There are three types of edits that can be performed on strings: insert a character, remove a character, or replace

@@ -1,4 +1,4 @@
-package DataStructures.ArraysAndStrings.Exercises;
+package DataStructures._Exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     Write a method to replace all spaces in a char array with '%20'. You may assume that the char array has sufficient
