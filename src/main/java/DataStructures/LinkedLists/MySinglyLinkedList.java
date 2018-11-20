@@ -1,31 +1,29 @@
 package DataStructures.LinkedLists;
 
-import java.util.Objects;
-
 @SuppressWarnings("unused")
 public class MySinglyLinkedList<E extends Object> {
 
     private int size;
-    private Node root;
+    private Node head;
 
     public MySinglyLinkedList() {
         size = 0;
-        this.root = null;
+        this.head = null;
     }
 
     public MySinglyLinkedList(E value) {
         size = 1;
-        this.root = new Node(value);
+        this.head = new Node(value);
     }
 
     public void add(E value) {
-        if (this.root == null) {
-            this.root = new Node(value);
+        if (this.head == null) {
+            this.head = new Node(value);
             size++;
             return;
         }
 
-        Node current = this.root;
+        Node current = this.head;
         while (current.getNext() != null) {
             current = current.getNext();
         }
@@ -36,7 +34,7 @@ public class MySinglyLinkedList<E extends Object> {
 
     public void add(E value, int index) {
         Node temp = new Node(value);
-        Node current = this.root;
+        Node current = this.head;
         if (current != null) {
             for (int i = 0; i < index && current.getNext() != null; i++) {
                 current = current.getNext();
@@ -49,11 +47,11 @@ public class MySinglyLinkedList<E extends Object> {
     }
 
     public E get(int index) {
-        if (index < 0 || this.root == null || index >= size) {
+        if (index < 0 || this.head == null || index >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        Node current = this.root;
+        Node current = this.head;
         for (int i = 0; i < index; i++) {
             if (current.getNext() == null) {
                 throw new ArrayIndexOutOfBoundsException();
@@ -61,21 +59,21 @@ public class MySinglyLinkedList<E extends Object> {
 
             current = current.getNext();
         }
-        return current.getData();
+        return current.getValue();
     }
 
     public E remove(int index) {
-        if (index < 0 || index >= size || this.root == null) {
+        if (index < 0 || index >= size || this.head == null) {
             throw new ArrayIndexOutOfBoundsException();
         }
 
         if (size == 1) {
-            Node temp = this.root;
-            this.root = null;
-            return temp.getData();
+            Node temp = this.head;
+            this.head = null;
+            return temp.getValue();
         }
 
-        Node current = this.root;
+        Node current = this.head;
         for (int i = 0; i < index; i++) {
             if (current.getNext() == null) {
                 throw new ArrayIndexOutOfBoundsException();
@@ -86,11 +84,11 @@ public class MySinglyLinkedList<E extends Object> {
         }
         E e = null;
         if (index == size - 1) {
-            e = current.getNext().getData();
+            e = current.getNext().getValue();
             current.setNext(current.getNext().getNext());
         } else if (current.getNext() != null) {
-            e = current.getData();
-            current.setData(current.getNext().getData());
+            e = current.getValue();
+            current.setValue(current.getNext().getValue());
             current.setNext(current.getNext().getNext());
         }
 
@@ -100,9 +98,9 @@ public class MySinglyLinkedList<E extends Object> {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
-        Node current = this.root;
+        Node current = this.head;
         while (current != null) {
-            sb.append(current.getData());
+            sb.append(current.getValue());
             if (current.getNext() != null) {
                 sb.append(", ");
             }
@@ -135,38 +133,33 @@ public class MySinglyLinkedList<E extends Object> {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        return 31 * Objects.hash(root) + Objects.hash(size);
-    }
-
     private class Node extends Object {
-        Node next;
-        E data;
+        private Node next;
+        private E value;
 
         public Node(E value) {
             this.next = null;
-            this.data = value;
+            this.value = value;
         }
 
         public Node (E value, Node next) {
             this.next = next;
-            this.data = value;
+            this.value = value;
         }
 
-        private void setData(E value) {
-            this.data = value;
+        private void setValue(E value) {
+            this.value = value;
         }
 
-        public E getData() {
-            return data;
+        private E getValue() {
+            return value;
         }
 
-        public Node getNext() {
+        private Node getNext() {
             return next;
         }
 
-        public void setNext(Node next) {
+        private void setNext(Node next) {
             this.next = next;
         }
 
