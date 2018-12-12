@@ -21,5 +21,4 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
     protected boolean extremeComparator(int xIndex, int yIndex) {
         return this.heap[xIndex].compareTo(this.heap[yIndex]) <= 0;
     }
-
 }

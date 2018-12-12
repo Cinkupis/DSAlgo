@@ -94,55 +94,55 @@ public abstract class Heap<T extends Comparable<T>> {
 
     /**
      * Comparison method used with up-heap operations, to be overridden within inheriting class.
-     * @param xIndex first index to use within comparison.
-     * @param yIndex second index to use within comparison.
+     * @param childIndex first index to use within comparison.
+     * @param parentIndex second index to use within comparison.
      * @return true or false based on the inheriting class' implementation.
      */
-    protected abstract boolean upHeapComparator(int xIndex, int yIndex);
+    protected abstract boolean upHeapComparator(int childIndex, int parentIndex);
 
     /**
      * Comparison method used with down-heap operations, to be overridden within inheriting class.
-     * @param xIndex first index to use within comparison.
-     * @param yIndex second index to use within comparison.
+     * @param childIndex first index to use within comparison.
+     * @param parentIndex second index to use within comparison.
      * @return true or false based on the inheriting class' implementation.
      */
-    protected abstract boolean downHeapComparator(int xIndex, int yIndex);
+    protected abstract boolean downHeapComparator(int childIndex, int parentIndex);
 
     /**
      * Comparison method used when finding an extreme value, to be overridden within inheriting class.
-     * @param xIndex first index to use within comparison.
-     * @param yIndex second index to use within comparison.
+     * @param childIndex first index to use within comparison.
+     * @param parentIndex second index to use within comparison.
      * @return true or false based on the inheriting class' implementation.
      */
-    protected abstract boolean extremeComparator(int xIndex, int yIndex);
+    protected abstract boolean extremeComparator(int childIndex, int parentIndex);
 
     /**
      * Compares two values within the underlying heap array and returns the index of the maximum.
-     * @param xIndex index of first item to use in comparison.
-     * @param yIndex index of second item to use in comparison.
+     * @param childIndex index of first item to use in comparison.
+     * @param parentIndex index of second item to use in comparison.
      * @return integer representing index of the maximum value from the comparison.
      * @throws IndexOutOfBoundsException
      */
-    protected int findExtremeIndex(int xIndex, int yIndex) throws IndexOutOfBoundsException {
-        if(xIndex >= this.size || yIndex >= this.size) {
+    protected int findExtremeIndex(int childIndex, int parentIndex) throws IndexOutOfBoundsException {
+        if(childIndex >= this.size || parentIndex >= this.size) {
             throw new IndexOutOfBoundsException();
         }
-        return (extremeComparator(xIndex, yIndex)) ? xIndex : yIndex;
+        return (extremeComparator(childIndex, parentIndex)) ? childIndex : parentIndex;
     }
 
     /**
      * Quick method used to swap two items within the underlying heap array.
-     * @param xIndex index of first item to swap.
-     * @param yIndex index of second item to swap.
+     * @param childIndex index of first item to swap.
+     * @param parentIndex index of second item to swap.
      * @throws IndexOutOfBoundsException
      */
-    protected void swap(int xIndex, int yIndex) throws IndexOutOfBoundsException {
-        if(xIndex > this.size || yIndex > this.size) {
+    protected void swap(int childIndex, int parentIndex) throws IndexOutOfBoundsException {
+        if(childIndex > this.size || childIndex > this.size) {
             throw new IndexOutOfBoundsException();
         }
-        T temp = this.heap[xIndex];
-        this.heap[xIndex] = this.heap[yIndex];
-        this.heap[yIndex] = temp;
+        T temp = this.heap[childIndex];
+        this.heap[childIndex] = this.heap[parentIndex];
+        this.heap[parentIndex] = temp;
     }
 
     /**

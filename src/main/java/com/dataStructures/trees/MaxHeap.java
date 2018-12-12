@@ -21,5 +21,4 @@ public class MaxHeap<T extends Comparable<T>> extends Heap<T> {
     protected boolean extremeComparator(int childIndex, int parentIndex) {
         return this.heap[childIndex].compareTo(this.heap[parentIndex]) > 0;
     }
-
 }
