@@ -165,9 +165,21 @@ public class BinaryTree {
             if (node.left != null) {
                 nodes.add(node.left);
             }
-            if (node.right!= null) {
+            if (node.right != null) {
                 nodes.add(node.right);
             }
         }
+    }
+
+    public boolean isBalanced() {
+        return false;
+    }
+
+    public boolean validateBST() {
+        return false;
+    }
+
+    public TreeNode getRandomNode() {
+        return null;
     }
 }
