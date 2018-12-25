@@ -1,4 +1,4 @@
-package com.dataStructures._exercises.CTCI.Chapter1_ArraysAndStrings;
+package com.exercises.CTCI.Chapter1_ArraysAndStrings;
 
 /*
     There are three types of edits that can be performed on strings: insert a character, remove a character, or replace

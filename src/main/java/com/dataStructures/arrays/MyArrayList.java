@@ -3,7 +3,7 @@ package com.dataStructures.arrays;
 import java.util.Arrays;
 import java.util.Objects;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "unchecked"})
 public class MyArrayList<E extends Object> {
     private E[] array;
     private int size = 0;

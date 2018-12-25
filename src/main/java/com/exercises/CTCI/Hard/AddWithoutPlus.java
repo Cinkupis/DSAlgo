@@ -1,4 +1,4 @@
-package com.dataStructures._exercises.CTCI.Hard;
+package com.exercises.CTCI.Hard;
 
 @SuppressWarnings("unused")
 public class AddWithoutPlus {

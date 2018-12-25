@@ -1,4 +1,4 @@
-package com.dataStructures._exercises.CTCI.Chapter1_ArraysAndStrings;
+package com.exercises.CTCI.Chapter1_ArraysAndStrings;
 
 import java.util.HashMap;
 

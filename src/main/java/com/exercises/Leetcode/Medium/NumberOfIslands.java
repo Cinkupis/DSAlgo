@@ -1,4 +1,4 @@
-package com.dataStructures._exercises.Leetcode.Medium;
+package com.exercises.Leetcode.Medium;
 
 import java.awt.*;
 import java.util.LinkedList;
