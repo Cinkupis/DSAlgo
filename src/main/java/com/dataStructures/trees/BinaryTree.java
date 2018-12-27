@@ -370,6 +370,16 @@ public class BinaryTree {
         return false;
     }
 
+    private TreeNode getLeftMostChild(TreeNode node) {
+        if (node == null) {
+            return null;
+        }
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
     public void setType(TreeTypes type) {
         this.type = type;
     }
@@ -491,17 +501,19 @@ public class BinaryTree {
     }
 
     public TreeNode inOrderSuccessor(TreeNode node) {
-        /**
-         * if (node.hasRightSubtree()) {
-         *  TreeNode leftMostChild = getLeftMostChild(node.right);
-         *  return leftMostChild;
-         * } else {
-         *  while (node.equals(node.parent.right)) {
-         *      node = node.parent;
-         *  }
-         *  return node.parent;
-         */
-        return null;
+        if (node == null) {
+            return null;
+        }
+
+        if (node.hasRightChild()) {
+            TreeNode leftMostChild = getLeftMostChild(node.right);
+            return leftMostChild;
+        } else {
+            while (node.parent != null && node.equals(node.parent.right)) {
+                node = node.parent;
+            }
+            return node.parent;
+        }
     }
 
     public int numOfPathsWithSum(int sum) {
