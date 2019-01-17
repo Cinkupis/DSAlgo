@@ -3,10 +3,7 @@ package com.dataStructures.trees;
 import com.dataStructures.trees.types.TreeTypes;
 import com.sun.source.tree.Tree;
 
-import java.util.LinkedList;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
@@ -380,6 +377,54 @@ public class BinaryTree {
         return node;
     }
 
+    private int numOfPathsWithSumFromNode(TreeNode node, int targetSum, int currentSum) {
+        if (node == null) {
+            return 0;
+        }
+
+        currentSum += node.value;
+
+        int totalPaths = 0;
+        if (currentSum == targetSum) {
+            totalPaths++;
+        }
+
+        totalPaths += numOfPathsWithSumFromNode(node.left, targetSum, currentSum);
+        totalPaths += numOfPathsWithSumFromNode(node.right, targetSum, currentSum);
+
+        return totalPaths;
+    }
+
+    private void incrementHashTable(HashMap<Integer, Integer> hashTable, int key, int delta) {
+        int newCount = hashTable.getOrDefault(key, 0) + delta;
+        if (newCount == 0) {
+            hashTable.remove(key);
+        } else {
+            hashTable.put(key, newCount);
+        }
+    }
+
+    private int countPathsWithSumON(TreeNode node, int targetSum, int runningSum, HashMap<Integer, Integer> pathCount) {
+        if (node == null) {
+            return 0;
+        }
+
+        runningSum += node.value;
+        int sum = runningSum - targetSum;
+        int totalPaths = pathCount.getOrDefault(sum, 0);
+
+        if (runningSum == targetSum) {
+            totalPaths++;
+        }
+
+        incrementHashTable(pathCount, runningSum, 1);
+        totalPaths += countPathsWithSumON(node.left, targetSum, runningSum, pathCount);
+        totalPaths += countPathsWithSumON(node.right, targetSum, runningSum, pathCount);
+        incrementHashTable(pathCount, runningSum, -1);
+
+        return totalPaths;
+    }
+
     public void setType(TreeTypes type) {
         this.type = type;
     }
@@ -516,11 +561,20 @@ public class BinaryTree {
         }
     }
 
-    public int numOfPathsWithSum(int sum) {
+    public int numOfPathsWithSumONLogN(TreeNode node, int targetSum) {
         if (root == null) {
-            return -1;
+            return 0;
         }
-        return -1;
+
+        int pathsFromRoot = numOfPathsWithSumFromNode(node, targetSum, 0);
+        int pathsOnLeft = numOfPathsWithSumONLogN(node.left, targetSum);
+        int pathsOnRight = numOfPathsWithSumONLogN(node.right, targetSum);
+
+        return pathsFromRoot + pathsOnLeft + pathsOnRight;
+    }
+
+    public int countPathsWithSumON(TreeNode node, int targetSum) {
+        return countPathsWithSumON(node, targetSum, 0, new HashMap<Integer, Integer>());
     }
 
     public void recreateAllPossibleBSTInputs() {
