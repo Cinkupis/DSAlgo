@@ -1,4 +1,4 @@
-package com.exercises.CTCI.Chapter1_ArraysAndStrings;
+package com.exercises.ctci.chapter1ArraysAndStrings;
 
 /*
     Write a method to replace all spaces in a char array with '%20'. You may assume that the char array has sufficient

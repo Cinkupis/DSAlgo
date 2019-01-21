@@ -1,4 +1,4 @@
-package com.exercises.CTCI.Chapter1_ArraysAndStrings;
+package com.exercises.ctci.chapter1ArraysAndStrings;
 
 /*
     Given two strings, write a method to decide if one is a permutation of the other.

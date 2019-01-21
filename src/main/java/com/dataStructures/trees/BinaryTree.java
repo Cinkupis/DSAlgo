@@ -1,7 +1,6 @@
 package com.dataStructures.trees;
 
 import com.dataStructures.trees.types.TreeTypes;
-import com.sun.source.tree.Tree;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -425,6 +424,25 @@ public class BinaryTree {
         return totalPaths;
     }
 
+    private void recurseLevel(List<List<Integer>> depthList, LinkedList<TreeNode> queue, int level) {
+        LinkedList<TreeNode> newQueue = new LinkedList<>();
+        depthList.add(new LinkedList<>());
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.pop();
+            depthList.get(level).add(node.value);
+
+            if (node.left != null) {
+                newQueue.add(node.left);
+            }
+            if (node.right != null) {
+                newQueue.add(node.right);
+            }
+        }
+        if (!newQueue.isEmpty()) {
+            recurseLevel(depthList, newQueue, level + 1);
+        }
+    }
+
     public void setType(TreeTypes type) {
         this.type = type;
     }
@@ -577,16 +595,31 @@ public class BinaryTree {
         return countPathsWithSumON(node, targetSum, 0, new HashMap<Integer, Integer>());
     }
 
+    public List<List<Integer>> listOfDepths() {
+        List<List<Integer>> depthList = new LinkedList<>();
+        if (root != null) {
+            LinkedList<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            recurseLevel(depthList, queue, 0);
+        }
+        return depthList;
+    }
+
+    public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
     public void recreateAllPossibleBSTInputs() {
 
     }
 
     public void arrayToMinimalTreeBST(int[] input) {
 
-    }
-
-    public LinkedList<LinkedList<TreeNode>> listOfDepths() {
-        return null;
     }
 
     public boolean checkSubTree(TreeNode anotherRoot) {
