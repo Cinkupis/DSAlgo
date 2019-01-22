@@ -1,4 +1,4 @@
-package com.exercises.ctci.Hard;
+package com.exercises.ctci.chapter17Hard;
 
 @SuppressWarnings("unused")
 public class AddWithoutPlus {
