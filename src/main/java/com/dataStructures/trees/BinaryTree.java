@@ -1,9 +1,9 @@
 package com.dataStructures.trees;
 
+import com.dataStructures.trees.nodes.TreeNode;
 import com.dataStructures.trees.types.TreeTypes;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
 public class BinaryTree {
@@ -33,58 +33,6 @@ public class BinaryTree {
         this.root = null;
         this.type = TreeTypes.BINARY_TREE;
         this.size = 0;
-    }
-
-    private static class TreeNode {
-        private Integer value;
-        private TreeNode left;
-        private TreeNode right;
-
-        // Used in other (non binary search) tree implementations
-        // Also in algorithms determining specific attributes of a tree
-        // The case with algorithms may apply to Binary Search Trees due to complexity.
-        private TreeNode parent;
-
-        private TreeNode(int value) {
-            this.value = value;
-        }
-
-        private boolean hasTwoChildren() {
-            return this.left != null && this.right != null;
-        }
-
-        private boolean hasLeftChild() {
-            return this.left != null;
-        }
-
-        private boolean hasRightChild() {
-            return this.right != null;
-        }
-
-        private boolean hasNoChildren() {
-            return this.left == null && this.right == null;
-        }
-
-        private boolean hasOneChild() {
-            return this.hasLeftChild() ^ this.hasRightChild();
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
-            TreeNode treeNode = (TreeNode) o;
-            return Objects.equals(value, treeNode.value);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(value);
-        }
     }
 
     private TreeNode addRecursiveBST(TreeNode current, int value) {
@@ -262,28 +210,6 @@ public class BinaryTree {
         return nodeToFind;
     }
 
-    private TreeNode findNodeOfIndexLevelOrder(int index) {
-        Queue<TreeNode> nodes = new LinkedList<>();
-        nodes.add(root);
-
-        while (!nodes.isEmpty()) {
-            TreeNode ofIndex = nodes.remove();
-            if (index == 0) {
-                return ofIndex;
-            }
-
-            if (ofIndex.left != null) {
-                nodes.add(ofIndex.left);
-            }
-
-            if (ofIndex.right != null) {
-                nodes.add(ofIndex.right);
-            }
-            index--;
-        }
-        return null;
-    }
-
     private void deleteDT(int value) {
         if (root == null) {
             throw new NoSuchElementException();
@@ -318,10 +244,6 @@ public class BinaryTree {
         }
     }
 
-    private void visit(TreeNode node) {
-        System.out.print(" => " + node.value);
-    }
-
     private int checkHeight(TreeNode node) {
         if (node == null) {
             return -1;
@@ -343,37 +265,6 @@ public class BinaryTree {
         } else {
             return Math.max(leftHeight, rightHeight) + 1;
         }
-    }
-
-    private boolean isBST(TreeNode node, int min, int max) {
-        if (node == null) {
-            return true;
-        }
-
-        if (node.value <= max && node.value > min) {
-            boolean validLeft = isBST(node.left, min, node.value);
-            if (!validLeft) {
-                return false;
-            }
-
-            boolean validRight = isBST(node.right, node.value, max);
-            if (!validRight) {
-                return false;
-            }
-
-            return true;
-        }
-        return false;
-    }
-
-    private TreeNode getLeftMostChild(TreeNode node) {
-        if (node == null) {
-            return null;
-        }
-        while (node.left != null) {
-            node = node.left;
-        }
-        return node;
     }
 
     private int numOfPathsWithSumFromNode(TreeNode node, int targetSum, int currentSum) {
@@ -422,25 +313,6 @@ public class BinaryTree {
         incrementHashTable(pathCount, runningSum, -1);
 
         return totalPaths;
-    }
-
-    private void recurseLevel(List<List<Integer>> depthList, LinkedList<TreeNode> queue, int level) {
-        LinkedList<TreeNode> newQueue = new LinkedList<>();
-        depthList.add(new LinkedList<>());
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.pop();
-            depthList.get(level).add(node.value);
-
-            if (node.left != null) {
-                newQueue.add(node.left);
-            }
-            if (node.right != null) {
-                newQueue.add(node.right);
-            }
-        }
-        if (!newQueue.isEmpty()) {
-            recurseLevel(depthList, newQueue, level + 1);
-        }
     }
 
     public void setType(TreeTypes type) {
@@ -497,86 +369,11 @@ public class BinaryTree {
         }
     }
 
-    public void inOrderTraversal(TreeNode node) {
-        if (node != null) {
-            inOrderTraversal(node.left);
-            visit(node);
-            inOrderTraversal(node.right);
-        }
-    }
-
-    public void preOrderTraversal(TreeNode node) {
-        if (node != null) {
-            visit(node);
-            preOrderTraversal(node.left);
-            preOrderTraversal(node.right);
-        }
-    }
-
-    public void postOrderTraversal(TreeNode node) {
-        if (node != null) {
-            postOrderTraversal(node.left);
-            postOrderTraversal(node.right);
-            visit(node);
-        }
-    }
-
-    public void levelOrderTraversal() {
-        if (root == null) {
-            return;
-        }
-
-        Queue<TreeNode> nodes = new LinkedList<>();
-        nodes.add(root);
-
-        while (!nodes.isEmpty()) {
-            TreeNode node = nodes.remove();
-            System.out.print(" => " + node.value);
-
-            if (node.left != null) {
-                nodes.add(node.left);
-            }
-            if (node.right != null) {
-                nodes.add(node.right);
-            }
-        }
-    }
-
     public boolean isBalanced() {
         if (type == TreeTypes.BINARY_TREE) {
             return true;
         }
         return checkHeight(this.root) != Integer.MIN_VALUE;
-    }
-
-    public boolean validateBST(TreeNode startNode) {
-        if (type == TreeTypes.BINARY_SEARCH_TREE) {
-            return true;
-        }
-
-        return isBST(startNode, Integer.MIN_VALUE, Integer.MAX_VALUE);
-    }
-
-    public TreeNode getRandomNode() {
-        System.out.println(size);
-        int randomIndex = ThreadLocalRandom.current().nextInt(0, size);
-        return findNodeOfIndexLevelOrder(randomIndex);
-    }
-
-    public TreeNode inOrderSuccessor(TreeNode node) {
-        if (node == null) {
-            return null;
-        }
-
-        if (node.hasRightChild()) {
-            TreeNode leftMostChild = getLeftMostChild(node.right);
-            return leftMostChild;
-        } else {
-            while (node.parent != null && node.equals(node.parent.right)) {
-                node = node.parent;
-            }
-            return node.parent;
-        }
     }
 
     public int numOfPathsWithSumONLogN(TreeNode node, int targetSum) {
@@ -593,25 +390,6 @@ public class BinaryTree {
 
     public int countPathsWithSumON(TreeNode node, int targetSum) {
         return countPathsWithSumON(node, targetSum, 0, new HashMap<Integer, Integer>());
-    }
-
-    public List<List<Integer>> listOfDepths() {
-        List<List<Integer>> depthList = new LinkedList<>();
-        if (root != null) {
-            LinkedList<TreeNode> queue = new LinkedList<>();
-            queue.add(root);
-            recurseLevel(depthList, queue, 0);
-        }
-        return depthList;
-    }
-
-    public int maxDepth(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
-        return Math.max(leftDepth, rightDepth) + 1;
     }
 
     public void recreateAllPossibleBSTInputs() {
@@ -636,14 +414,10 @@ public class BinaryTree {
         //binaryTree.add(13);
 
         System.out.print("Start");
-        binaryTree.levelOrderTraversal();
         System.out.println("\n" + binaryTree.isBalanced());
         System.out.println(binaryTree.containsNode(15));
         System.out.println(binaryTree.containsNode(12));
         System.out.println(binaryTree.findSmallestValue());
         System.out.print("Start");
-        binaryTree.levelOrderTraversal();
-        System.out.println("\n" + binaryTree.validateBST(binaryTree.root));
-        System.out.println("\n" + binaryTree.getRandomNode().value);
     }
 }
