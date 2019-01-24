@@ -7,23 +7,26 @@ import java.util.Queue;
 
 @SuppressWarnings("unused")
 public class LevelOrderTraversal extends abstractTraversal {
-    public void levelOrderTraversal(TreeNode root) {
+    public void traverse(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        Queue<TreeNode> nodes = new LinkedList<>();
-        nodes.add(root);
+        Queue<TreeNode> nodesInQueue = new LinkedList<>();
+        nodesInQueue.add(root);
 
-        while (!nodes.isEmpty()) {
-            TreeNode node = nodes.remove();
+        while (!nodesInQueue.isEmpty()) {
+            TreeNode node = nodesInQueue.remove();
             visit(node);
 
             if (node.left != null) {
-                nodes.add(node.left);
+                nodesInQueue.add(node.left);
             }
             if (node.right != null) {
-                nodes.add(node.right);
+                nodesInQueue.add(node.right);
+            }
+            if (!nodesInQueue.isEmpty()) {
+                System.out.print(" => ");
             }
         }
     }

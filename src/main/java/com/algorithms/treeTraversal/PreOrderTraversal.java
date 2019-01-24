@@ -7,6 +7,7 @@ public class PreOrderTraversal extends abstractTraversal {
     public void traverse(TreeNode node) {
         if (node != null) {
             visit(node);
+            System.out.print(" => ");
             traverse(node.left);
             traverse(node.right);
         }

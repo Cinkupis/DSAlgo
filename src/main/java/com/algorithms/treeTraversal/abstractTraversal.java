@@ -4,6 +4,8 @@ import com.dataStructures.trees.nodes.TreeNode;
 
 public abstract class abstractTraversal {
     void visit(TreeNode node) {
-        System.out.print(" => " + node.value);
+        System.out.print(node.value);
     }
+
+    abstract void traverse(TreeNode root);
 }

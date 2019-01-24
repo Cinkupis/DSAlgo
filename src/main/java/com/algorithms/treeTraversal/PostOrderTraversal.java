@@ -9,6 +9,7 @@ public class PostOrderTraversal extends abstractTraversal {
             traverse(node.left);
             traverse(node.right);
             visit(node);
+            System.out.print(" => ");
         }
     }
 }

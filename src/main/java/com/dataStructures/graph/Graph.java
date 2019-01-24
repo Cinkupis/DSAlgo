@@ -10,12 +10,12 @@ public class Graph {
     private class Node {
         private Set<Integer> adjacentNodes;
 
-        private int num;
+        private int number;
         private boolean visited;
         private boolean marked;
 
         public Node() {
-            this.num = size;
+            this.number = size;
             this.visited = false;
             this.marked = false;
             this.adjacentNodes = new HashSet<>();
@@ -78,7 +78,7 @@ public class Graph {
             throw  new ArrayIndexOutOfBoundsException();
         }
         for (int existingNode : this.nodes[nodeToRemove].adjacentNodes) {
-            removeVertex(existingNode, nodeToRemove);
+            removeEdge(existingNode, nodeToRemove);
         }
 
         for (int i = nodeToRemove + 1; i < this.size; i++) {
@@ -87,7 +87,7 @@ public class Graph {
         this.size--;
     }
 
-    public void removeVertex(int fromNode, int toNode) {
+    public void removeEdge(int fromNode, int toNode) {
         this.nodes[fromNode].adjacentNodes.remove(toNode);
     }
 
@@ -126,7 +126,7 @@ public class Graph {
 
     private void breadthFirstSearchStep(MyQueue<Node> queue, boolean[] visits) {
         Node next = queue.remove();
-        visits[next.num] = true;
+        visits[next.number] = true;
         for (int adjacent : next.adjacentNodes) {
             Node adjacentNode = this.nodes[adjacent];
             if (!visits[adjacent]) {
@@ -143,7 +143,7 @@ public class Graph {
     }
 
     private void visit(Node node) {
-        System.out.println(node.num);
+        System.out.println(node.number);
         node.visited = true;
         System.out.println(" -> ");
     }
@@ -153,7 +153,7 @@ public class Graph {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        if (fromNode.adjacentNodes.contains(toNode.num)) {
+        if (fromNode.adjacentNodes.contains(toNode.number)) {
             return true;
         }
         return false;

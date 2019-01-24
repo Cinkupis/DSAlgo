@@ -8,6 +8,7 @@ public class InOrderTraversal extends abstractTraversal {
         if (node != null) {
             traverse(node.left);
             visit(node);
+            System.out.print(" => ");
             traverse(node.right);
         }
     }
