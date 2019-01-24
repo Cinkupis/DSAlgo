@@ -1,5 +1,6 @@
 package com.dataStructures.graph;
 
+import com.dataStructures.graph.nodes.GraphNode;
 import com.dataStructures.queue.MyQueue;
 
 import java.util.*;
@@ -7,30 +8,14 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class Graph {
 
-    private class Node {
-        private Set<Integer> adjacentNodes;
-
-        private int number;
-        private boolean visited;
-        private boolean marked;
-
-        public Node() {
-            this.number = size;
-            this.visited = false;
-            this.marked = false;
-            this.adjacentNodes = new HashSet<>();
-        }
-
-    }
-
-    private Node[] nodes;
+    private GraphNode[] nodes;
     private int maxSize;
     private int size;
 
     public Graph() {
         this.maxSize = 2;
         this.size = 0;
-        this.nodes = new Node[maxSize];
+        this.nodes = new GraphNode[maxSize];
     }
 
     public int getSize() {
@@ -53,7 +38,7 @@ public class Graph {
         if (this.size == this.maxSize) {
             increaseSize();
         }
-        this.nodes[this.size] = new Node();
+        this.nodes[this.size] = new GraphNode(size);
         this.size++;
     }
 
@@ -65,7 +50,7 @@ public class Graph {
         this.nodes[node2].adjacentNodes.add(node1);
     }
 
-    public Node getNode(int node) {
+    public GraphNode getNode(int node) {
         if (node >= this.size || node < 0) {
             throw  new ArrayIndexOutOfBoundsException();
         }
@@ -91,7 +76,7 @@ public class Graph {
         this.nodes[fromNode].adjacentNodes.remove(toNode);
     }
 
-    public void depthFirstTraversal(Node node) {
+    public void depthFirstTraversal(GraphNode node) {
         if (node == null) {
             return;
         }
@@ -105,16 +90,16 @@ public class Graph {
         resetVisits();
     }
 
-    public void breadthFirstTraversal(Node node) {
-        MyQueue<Node> queue = new MyQueue<>();
+    public void breadthFirstTraversal(GraphNode node) {
+        MyQueue<GraphNode> queue = new MyQueue<>();
         queue.add(node);
         node.marked = true;
 
         while (!queue.isEmpty()) {
-            Node next = queue.remove();
+            GraphNode next = queue.remove();
             visit(next);
             for (int adjacent : next.adjacentNodes) {
-                Node adjacentNode = this.nodes[adjacent];
+                GraphNode adjacentNode = this.nodes[adjacent];
                 if (!adjacentNode.marked) {
                     adjacentNode.marked = true;
                     queue.add(adjacentNode);
@@ -124,11 +109,11 @@ public class Graph {
         resetVisits();
     }
 
-    private void breadthFirstSearchStep(MyQueue<Node> queue, boolean[] visits) {
-        Node next = queue.remove();
+    private void breadthFirstSearchStep(MyQueue<GraphNode> queue, boolean[] visits) {
+        GraphNode next = queue.remove();
         visits[next.number] = true;
         for (int adjacent : next.adjacentNodes) {
-            Node adjacentNode = this.nodes[adjacent];
+            GraphNode adjacentNode = this.nodes[adjacent];
             if (!visits[adjacent]) {
                 queue.add(adjacentNode);
             }
@@ -136,19 +121,19 @@ public class Graph {
     }
 
     private void resetVisits() {
-        for (Node node : this.nodes) {
+        for (GraphNode node : this.nodes) {
             node.visited = false;
             node.marked = false;
         }
     }
 
-    private void visit(Node node) {
+    private void visit(GraphNode node) {
         System.out.println(node.number);
         node.visited = true;
         System.out.println(" -> ");
     }
 
-    public boolean pathBetweenNodes(Node fromNode, Node toNode) {
+    public boolean pathBetweenNodes(GraphNode fromNode, GraphNode toNode) {
         if (fromNode == null || toNode == null) {
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -180,8 +165,8 @@ public class Graph {
         boolean[] node1Visited = new boolean[this.nodes.length];
         boolean[] node2Visited = new boolean[this.nodes.length];
 
-        MyQueue<Node> node1Queue = new MyQueue<>();
-        MyQueue<Node> node2Queue = new MyQueue<>();
+        MyQueue<GraphNode> node1Queue = new MyQueue<>();
+        MyQueue<GraphNode> node2Queue = new MyQueue<>();
 
         node1Queue.add(this.nodes[node1]);
         node2Queue.add(this.nodes[node2]);

@@ -6,8 +6,23 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class MySinglyLinkedList<E extends Object> {
 
+    private class ListNode extends Object {
+        private ListNode next;
+        private E value;
+
+        public ListNode(E value) {
+            this.next = null;
+            this.value = value;
+        }
+
+        public ListNode(E value, ListNode next) {
+            this.next = next;
+            this.value = value;
+        }
+    }
+
     private int size;
-    private Node head;
+    private ListNode head;
 
     public MySinglyLinkedList() {
         size = 0;
@@ -16,28 +31,28 @@ public class MySinglyLinkedList<E extends Object> {
 
     public MySinglyLinkedList(E value) {
         size = 1;
-        this.head = new Node(value);
+        this.head = new ListNode(value);
     }
 
     public void add(E value) {
         if (this.head == null) {
-            this.head = new Node(value);
+            this.head = new ListNode(value);
             size++;
             return;
         }
 
-        Node current = this.head;
+        ListNode current = this.head;
         while (current.next != null) {
             current = current.next;
         }
 
-        current.next = new Node(value);
+        current.next = new ListNode(value);
         size++;
     }
 
     public void add(E value, int index) {
-        Node temp = new Node(value);
-        Node current = this.head;
+        ListNode temp = new ListNode(value);
+        ListNode current = this.head;
         if (current != null) {
             for (int i = 0; i < index && current.next != null; i++) {
                 current = current.next;
@@ -54,7 +69,7 @@ public class MySinglyLinkedList<E extends Object> {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        Node current = this.head;
+        ListNode current = this.head;
         for (int i = 0; i < index; i++) {
             if (current.next == null) {
                 throw new ArrayIndexOutOfBoundsException();
@@ -71,12 +86,12 @@ public class MySinglyLinkedList<E extends Object> {
         }
 
         if (size == 1) {
-            Node temp = this.head;
+            ListNode temp = this.head;
             this.head = null;
             return temp.value;
         }
 
-        Node current = this.head;
+        ListNode current = this.head;
         for (int i = 0; i < index; i++) {
             if (current.next == null) {
                 throw new ArrayIndexOutOfBoundsException();
@@ -103,7 +118,7 @@ public class MySinglyLinkedList<E extends Object> {
         if (this.head == null) {
             return;
         }
-        Node current = this.head;
+        ListNode current = this.head;
         Set<E> set = new HashSet<>();
         int uniques = 0;
         for (int i = 0; i < size; i++) {
@@ -122,8 +137,8 @@ public class MySinglyLinkedList<E extends Object> {
             return;
         }
 
-        Node p1 = this.head;
-        Node p2 = this.head;
+        ListNode p1 = this.head;
+        ListNode p2 = this.head;
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -146,8 +161,8 @@ public class MySinglyLinkedList<E extends Object> {
     }
 
     public E returnKthToLastUnknownSize(int k) {
-        Node p1 = this.head;
-        Node p2 = this.head;
+        ListNode p1 = this.head;
+        ListNode p2 = this.head;
 
         for (int i = 0; i < k; i++) {
             if (p1 == null) {
@@ -164,11 +179,11 @@ public class MySinglyLinkedList<E extends Object> {
         return p2.value;
     }
 
-    public void deleteMiddleNode(Node toDelete) {
+    public void deleteMiddleNode(ListNode toDelete) {
         if (toDelete == null) {
             return;
         }
-        Node current = this.head;
+        ListNode current = this.head;
         while (current.next != toDelete && current != null) {
             current = current.next;
         }
@@ -182,7 +197,7 @@ public class MySinglyLinkedList<E extends Object> {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
-        Node current = this.head;
+        ListNode current = this.head;
         while (current != null) {
             sb.append(current.value);
             if (current.next != null) {
@@ -215,20 +230,5 @@ public class MySinglyLinkedList<E extends Object> {
         }
 
         return true;
-    }
-
-    private class Node extends Object {
-        private Node next;
-        private E value;
-
-        public Node(E value) {
-            this.next = null;
-            this.value = value;
-        }
-
-        public Node (E value, Node next) {
-            this.next = next;
-            this.value = value;
-        }
     }
 }
