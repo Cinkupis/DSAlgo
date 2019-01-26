@@ -5,6 +5,12 @@ import java.util.ArrayList;
 @SuppressWarnings("unused")
 public class MyHashTable<K, V> {
 
+    private ArrayList<HashNode<K, V>> buckets;
+    private int capacity;
+    private int size;
+
+    private static final int INITIAL_CAPACITY = 1 << 4;
+
     private class HashNode<K, V> {
         public K key;
         public V value;
@@ -15,12 +21,6 @@ public class MyHashTable<K, V> {
             this.value = value;
         }
     }
-
-    private ArrayList<HashNode<K, V>> buckets;
-    private int capacity;
-    private int size;
-
-    private static final int INITIAL_CAPACITY = 1 << 4;
 
     public MyHashTable(int capacity) {
         this.capacity = capacity;

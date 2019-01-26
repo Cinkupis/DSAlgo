@@ -223,7 +223,7 @@ public class BinaryTree {
         }
 
         size--;
-        if (deletedNode == root && replacementNodeLast == root) {
+        if (deletedNode.equals(root) && replacementNodeLast.equals(root)) {
             root = null;
             return;
         }

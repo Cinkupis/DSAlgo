@@ -6,7 +6,10 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class MySinglyLinkedList<E extends Object> {
 
-    private class ListNode extends Object {
+    private int size;
+    private ListNode head;
+
+    private class ListNode {
         private ListNode next;
         private E value;
 
@@ -20,9 +23,6 @@ public class MySinglyLinkedList<E extends Object> {
             this.value = value;
         }
     }
-
-    private int size;
-    private ListNode head;
 
     public MySinglyLinkedList() {
         size = 0;

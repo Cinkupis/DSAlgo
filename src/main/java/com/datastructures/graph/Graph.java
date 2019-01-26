@@ -83,7 +83,7 @@ public class Graph {
 
         visit(node);
         for (int adjacentNode : node.adjacentNodes) {
-            if (this.nodes[adjacentNode].visited == false) {
+            if (!this.nodes[adjacentNode].visited) {
                 depthFirstTraversal(this.nodes[adjacentNode]);
             }
         }
@@ -146,7 +146,7 @@ public class Graph {
 
     private int isIntersection(boolean[] node1Visited, boolean[] node2Visited) {
         for (int i = 0; i < node1Visited.length; i++) {
-            if (node1Visited[i] == true && node2Visited[i] == true) {
+            if (node1Visited[i] && node2Visited[i]) {
                 return i;
             }
         }
