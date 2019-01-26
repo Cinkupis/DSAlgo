@@ -1,6 +1,6 @@
 package com.algorithms.treeTraversal;
 
-import com.dataStructures.trees.nodes.TreeNode;
+import com.datastructures.trees.nodes.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
