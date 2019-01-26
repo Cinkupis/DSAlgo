@@ -4,6 +4,7 @@ package com.exercises.ctci.chapter1arraysandstrings;
     Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional
     data structures?
  */
+@SuppressWarnings("unused")
 public class IsUnique {
 
     private boolean isUniqueUsingIndexes(String input) {
@@ -19,11 +20,5 @@ public class IsUnique {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        String test = "AaBbCctyuioP";
-        IsUnique isUnique = new IsUnique();
-        System.out.println(isUnique.isUniqueUsingIndexes(test));
     }
 }

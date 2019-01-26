@@ -6,6 +6,7 @@ package com.exercises.ctci.chapter1arraysandstrings;
     original string, then the method should return the original string. You can assume string has only uppercase
     and lowercase letters (a-z).
  */
+@SuppressWarnings("unused")
 public class StringCompression {
 
     private String compressString(String uncompressed) {
@@ -33,10 +34,5 @@ public class StringCompression {
             return compressed.toString();
         }
         return uncompressed;
-    }
-
-    public static void main(String[] args) {
-        StringCompression stringCompression = new StringCompression();
-        System.out.print(stringCompression.compressString("aabcccccaaaffffffffgt"));
     }
 }

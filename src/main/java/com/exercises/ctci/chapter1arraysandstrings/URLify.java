@@ -5,6 +5,7 @@ package com.exercises.ctci.chapter1arraysandstrings;
     space at the end to hold the additional characters, and that you are given the "true" length of the string.
     Do not use Java Strings.
  */
+@SuppressWarnings("unused")
 public class URLify {
     private String urlify(char[] originalString, int actualLength) {
         int spaceCount = 0;
@@ -25,10 +26,5 @@ public class URLify {
         }
 
         return String.copyValueOf(originalString);
-    }
-
-    public static void main(String[] args) {
-        URLify url = new URLify();
-        System.out.print(url.urlify("Mr John Smith     ".toCharArray(), 13));
     }
 }

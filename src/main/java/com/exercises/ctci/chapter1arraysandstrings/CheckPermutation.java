@@ -3,6 +3,7 @@ package com.exercises.ctci.chapter1arraysandstrings;
 /*
     Given two strings, write a method to decide if one is a permutation of the other.
  */
+@SuppressWarnings("unused")
 public class CheckPermutation {
 
     private boolean checkPermutation(String one, String two) {
@@ -27,12 +28,5 @@ public class CheckPermutation {
         }
 
         return true;
-    }
-
-    public static void main(String[] args) {
-        String one = "qwerty";
-        String two = "qywtey";
-        CheckPermutation permutation = new CheckPermutation();
-        System.out.println(permutation.checkPermutation(one, two));
     }
 }

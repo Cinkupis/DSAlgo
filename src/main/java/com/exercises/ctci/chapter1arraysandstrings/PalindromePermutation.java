@@ -12,6 +12,7 @@ import java.util.HashMap;
     Output: True
     (permutations: "taco cat", "atco cta", etc.)
  */
+@SuppressWarnings("unused")
 public class PalindromePermutation {
     private boolean hasPalindromePermutation(String input) {
         if (input == null || input.isEmpty()) {
@@ -46,10 +47,5 @@ public class PalindromePermutation {
         }
 
         return true;
-    }
-
-    public static void main(String[] args) {
-        PalindromePermutation palindromePermutation = new PalindromePermutation();
-        System.out.print(palindromePermutation.hasPalindromePermutation("aaabbtt"));
     }
 }

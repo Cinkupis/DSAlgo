@@ -3,6 +3,7 @@ package com.exercises.ctci.chapter1arraysandstrings;
 /*
     Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
  */
+@SuppressWarnings("unused")
 public class ZeroMatrix {
 
     private final static byte N = 5;
@@ -60,58 +61,5 @@ public class ZeroMatrix {
         for (int i = 0; i < matrix.length; i++) {
             matrix[i][col] = 0;
         }
-    }
-
-    public static void main(String[] args) {
-        ZeroMatrix zeroMatrix = new ZeroMatrix();
-
-        // Initialize.
-        int matrix[][] = new int[M][N];
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
-                matrix[i][j] = (int)(Math.random() * 10);
-            }
-        }
-
-        // Print out original version
-        for (int i = 0; i < 2 * N + 1; i++)
-            System.out.print("_");
-        System.out.println();
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
-                if (j == 0) {
-                    System.out.print("|");
-                }
-                System.out.print(matrix[i][j] + "|");
-                if (j == N - 1) {
-                    System.out.println();
-                }
-            }
-        }
-        for (int i = 0; i < 2 * N + 1; i++)
-            System.out.print("-");
-        System.out.println();
-
-        // Zero out rows/columns that have at least one zero in it
-        matrix = zeroMatrix.zeroOutRowColumn(matrix);
-
-        // Print out the zeroed version
-        for (int i = 0; i < 2 * N + 1; i++)
-            System.out.print("_");
-        System.out.println();
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
-                if (j == 0) {
-                    System.out.print("|");
-                }
-                System.out.print(matrix[i][j] + "|");
-                if (j == N - 1) {
-                    System.out.println();
-                }
-            }
-        }
-        for (int i = 0; i < 2 * N + 1; i++)
-            System.out.print("-");
-        System.out.println();
     }
 }

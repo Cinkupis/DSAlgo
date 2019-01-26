@@ -11,6 +11,7 @@ package com.exercises.ctci.chapter1arraysandstrings;
     pape, pepa -> false
     pale, bake -> false
  */
+@SuppressWarnings("unused")
 public class OneAway {
 
     private boolean oneOrZeroEditsAway(String one, String two) {
@@ -43,10 +44,5 @@ public class OneAway {
         }
 
         return false;
-    }
-
-    public static void main(String[] args) {
-        OneAway oneAway = new OneAway();
-        System.out.print(oneAway.oneOrZeroEditsAway("pale", "sale")); // false
     }
 }

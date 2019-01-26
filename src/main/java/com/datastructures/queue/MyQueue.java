@@ -4,6 +4,10 @@ import java.util.NoSuchElementException;
 
 @SuppressWarnings("unused")
 public class MyQueue<T extends Object> {
+
+    private QueueNode<T> first;
+    private QueueNode<T> last;
+
     private static class QueueNode<T extends Object> {
         private T value;
         private QueueNode<T> next;
@@ -12,9 +16,6 @@ public class MyQueue<T extends Object> {
             this.value = value;
         }
     }
-
-    private QueueNode<T> first;
-    private QueueNode<T> last;
 
     public void add(T item) {
         QueueNode<T> newNode = new QueueNode<>(item);

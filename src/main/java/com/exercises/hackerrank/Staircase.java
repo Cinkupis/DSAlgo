@@ -4,7 +4,9 @@ import java.util.*;
 
 public class Staircase {
 
-    static void staircase(int n) {
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void staircase(int n) {
         for (int numTags = 1; numTags < n + 1; numTags++) {
             for (int i = 0; i < n - numTags; i++) {
                 System.out.print(" ");
@@ -16,8 +18,6 @@ public class Staircase {
         }
 
     }
-
-    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         int n = scanner.nextInt();
