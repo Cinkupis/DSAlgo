@@ -29,7 +29,7 @@ public class StringCompression {
         }
         compressed.append(counter);
 
-        if (compressed.toString().length() < uncompressed.length()) {
+        if (compressed.length() < uncompressed.length()) {
             return compressed.toString();
         }
         return uncompressed;

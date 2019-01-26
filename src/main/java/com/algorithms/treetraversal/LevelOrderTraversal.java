@@ -1,4 +1,4 @@
-package com.algorithms.treeTraversal;
+package com.algorithms.treetraversal;
 
 import com.datastructures.trees.nodes.TreeNode;
 
@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 @SuppressWarnings("unused")
-public class LevelOrderTraversal extends abstractTraversal {
+public class LevelOrderTraversal extends AbstractTraversal {
     public void traverse(TreeNode root) {
         if (root == null) {
             return;
