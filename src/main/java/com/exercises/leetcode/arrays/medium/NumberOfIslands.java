@@ -1,4 +1,4 @@
-package com.exercises.leetcode.medium;
+package com.exercises.leetcode.arrays.medium;
 
 @SuppressWarnings("unused")
 public class NumberOfIslands {
