@@ -14,36 +14,21 @@ import java.util.HashMap;
  */
 @SuppressWarnings("unused")
 public class PalindromePermutation {
-    private boolean hasPalindromePermutation(String input) {
-        if (input == null || input.isEmpty()) {
-            return false;
+    public boolean hasPalindromePermutation(String s) {
+        if (s == null || s.isEmpty()) {
+            return true;
         }
-        input = input.toLowerCase();
-        input = input.replaceAll(" ", "");
+        char[] input = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase().toCharArray();
 
-        HashMap<Character, Integer> charCounter = new HashMap<>();
-        short oddCounter = 0;
+        int leftBound = 0;
+        int rightBound = input.length - 1;
 
-        for (char c : input.toCharArray()) {
-            if (!charCounter.containsKey(c)) {
-                charCounter.put(c, 1);
-                oddCounter++;
-            } else {
-                charCounter.put(c, charCounter.get(c) + 1);
-                if (charCounter.get(c) % 2 == 0) {
-                    oddCounter--;
-                } else {
-                    oddCounter++;
-                }
+        while (leftBound < rightBound) {
+            if (input[leftBound] != input[rightBound]) {
+                return false;
             }
-        }
-
-        if (oddCounter > 1) {
-            return false;
-        }
-
-        if (oddCounter == 1 && input.length() % 2 == 0) {
-            return false;
+            leftBound++;
+            rightBound--;
         }
 
         return true;
