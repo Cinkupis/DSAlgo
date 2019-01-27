@@ -1,4 +1,4 @@
-package com.exercises.leetcode.dynamicprogramming;
+package com.exercises.leetcode.dynamicprogramming.easy;
 
 @SuppressWarnings("unused")
 public class Staircase {
