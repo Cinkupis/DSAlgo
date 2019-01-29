@@ -1,36 +1,17 @@
-package com.exercises.ctci.chapter6mathlogicpuzzles;
+package com.exercises.leetcode.mathpuzzles.easy;
 
 @SuppressWarnings("unused")
-public class PrimalityChecking {
-    public boolean primeNaive(int n) {
+public class CountPrimeNumbers {
+    public int countPrimes(int n) {
         if (n < 2) {
-            return false;
+            return 0;
         }
-
-        for (int i = 2; i < n; i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
+        return sieveOfEratosthenes(n - 1);
     }
 
-    public boolean primeSlightlyBetter(int n) {
-        if (n < 2) {
-            return false;
-        }
-
-        int sqroot = (int) Math.sqrt(n);
-        for (int i = 2; i <= sqroot; i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean[] sieveOfEratosthenes(int max) {
+    public int sieveOfEratosthenes(int max) {
         boolean[] flags = new boolean[max + 1];
+        int count = 0;
 
         flags[0] = false;
         flags[1] = false;
@@ -44,7 +25,13 @@ public class PrimalityChecking {
             prime = getNextPrime(flags, prime);
         }
 
-        return flags;
+        for (int i = 2; i < max + 1; i++) {
+            if (flags[i]) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private void crossOff(boolean[] flags, int prime) {
