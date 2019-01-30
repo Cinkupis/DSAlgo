@@ -2,8 +2,14 @@ package com.algorithms.sort;
 
 import java.util.Arrays;
 
+/*
+Best Case:
+Average Case:
+Worst Case:
+ */
+
 @SuppressWarnings("unused")
-public class CountSort {
+public class CountingSort {
     private int getMax(int array[]) {
         int maxValue = array[0];
         for (int i = 1; i < array.length; i++)

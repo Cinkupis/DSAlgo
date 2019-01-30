@@ -2,6 +2,12 @@ package com.algorithms.sort;
 
 import java.util.Arrays;
 
+/*
+Best Case:
+Average Case:
+Worst Case:
+ */
+
 @SuppressWarnings("unused")
 public class RadixSort {
     private int getMax(int array[]) {
