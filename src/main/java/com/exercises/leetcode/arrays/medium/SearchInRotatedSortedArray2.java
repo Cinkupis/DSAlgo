@@ -1,15 +1,14 @@
 package com.exercises.leetcode.arrays.medium;
 
 @SuppressWarnings("unused")
-public class SearchInRotatedSortedArray {
-
-    public int search(int[] nums, int target) {
+public class SearchInRotatedSortedArray2 {
+    public boolean search(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
         while(start <= end) {
             int mid = (start + end) / 2;
             if (nums[mid] == target) {
-                return mid;
+                return true;
             }
             if (nums[mid] < nums[end] || nums[mid] < nums[start]) {
                 if (target > nums[mid] && target <= nums[end]) {
@@ -28,6 +27,6 @@ public class SearchInRotatedSortedArray {
             }
         }
 
-        return -1;
+        return false;
     }
 }
