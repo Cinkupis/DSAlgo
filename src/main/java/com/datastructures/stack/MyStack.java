@@ -4,7 +4,7 @@ import java.util.EmptyStackException;
 
 @SuppressWarnings("unused")
 public class MyStack<T extends Object> {
-    private static class StackNode<T extends Object> {
+    private class StackNode<T extends Object> {
         private T value;
         private StackNode<T> next;
 

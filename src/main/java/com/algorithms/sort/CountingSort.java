@@ -10,33 +10,48 @@ Worst Case:
 
 @SuppressWarnings("unused")
 public class CountingSort {
-    private int getMax(int array[]) {
+    public static int[] sort(int[] array) {
+
+        int[] sorted = new int[array.length];
+
+        int minValue = array[0];
         int maxValue = array[0];
-        for (int i = 1; i < array.length; i++)
-            if (array[i] > maxValue)
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < minValue) {
+                minValue = array[i];
+            } else if (array[i] > maxValue) {
                 maxValue = array[i];
-        return maxValue;
+            }
+        }
+
+        int[] arrayOfOccurrences = new int[maxValue - minValue + 1];
+
+        for (int i = 0;  i < array.length; i++) {
+            int index = array[i] - minValue;
+            arrayOfOccurrences[index]++;
+        }
+
+        arrayOfOccurrences[0]--;
+        for (int i = 1; i < arrayOfOccurrences.length; i++) {
+            arrayOfOccurrences[i] = arrayOfOccurrences[i] + arrayOfOccurrences[i - 1];
+        }
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            int index = array[i] - minValue;
+            sorted[arrayOfOccurrences[index]] = array[i];
+            arrayOfOccurrences[index]--;
+        }
+
+        return sorted;
     }
 
-    private void sort(int inputArray[]) {
-        int outputArray[] = new int[inputArray.length];
-        int bucket[] = new int[10];
-        Arrays.fill(bucket,0);
+    public static void main(String[] args) {
 
-        for (int i = 0; i < inputArray.length; i++) {
-            bucket[inputArray[i]]++;
-        }
+        int [] unsorted = {1, 5, 10, 10, 5, 1};
+        System.out.println("Before: " + Arrays.toString(unsorted));
 
-        for (int i = 1; i < 10; i++) {
-            bucket[i] += bucket[i - 1];
-        }
+        int [] sorted = sort(unsorted);
+        System.out.println("After:  " + Arrays.toString(sorted));
 
-        for (int i = inputArray.length - 1; i >= 0; i--) {
-            outputArray[bucket[inputArray[i]] - 1] = inputArray[i];
-            bucket[inputArray[i]]--;
-        }
-
-        for (int i = 0; i < inputArray.length; i++)
-            inputArray[i] = outputArray[i];
     }
 }
