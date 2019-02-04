@@ -3,9 +3,9 @@ package com.algorithms.sort;
 import java.util.Arrays;
 
 /*
-Best Case:
-Average Case:
-Worst Case:
+    Best Case:
+    Average Case:
+    Worst Case:
  */
 
 @SuppressWarnings("unused")

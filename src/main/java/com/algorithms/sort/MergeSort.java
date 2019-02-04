@@ -1,23 +1,23 @@
 package com.algorithms.sort;
 
 /*
-Best Case:
-Average Case:
-Worst Case:
+    Best Case: O(nLog(n))
+    Average Case: O(nLog(n))
+    Worst Case: O(nLog(n))
  */
 
 @SuppressWarnings("unused")
 public class MergeSort {
     public void sort(int[] array) {
         int[] helper = new int[array.length];
-        mergesort(array, helper, 0, array.length - 1);
+        mergeSort(array, helper, 0, array.length - 1);
     }
 
-    private void mergesort(int[] array, int[] helper, int low, int high) {
+    private void mergeSort(int[] array, int[] helper, int low, int high) {
         if (low < high) {
             int middle = (low + high) / 2;
-            mergesort(array, helper, low, middle);
-            mergesort(array, helper, middle + 1, high);
+            mergeSort(array, helper, low, middle);
+            mergeSort(array, helper, middle + 1, high);
             merge(array, helper, low, middle, high);
         }
     }

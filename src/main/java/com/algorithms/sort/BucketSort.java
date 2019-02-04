@@ -1,9 +1,9 @@
 package com.algorithms.sort;
 
 /*
-Best Case: O(n + k(
-Average Case: O(n + k)
-Worst Case: O(n^2)
+    Best Case: O(n + k(
+    Average Case: O(n + k)
+    Worst Case: O(n^2)
  */
 
 import java.util.ArrayList;

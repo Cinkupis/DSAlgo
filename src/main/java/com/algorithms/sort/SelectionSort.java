@@ -1,9 +1,9 @@
 package com.algorithms.sort;
 
 /*
-Best Case:
-Average Case:
-Worst Case:
+    Best Case: O(n^2)
+    Average Case: O(n^2)
+    Worst Case: O(n^2)
  */
 
 @SuppressWarnings("unused")

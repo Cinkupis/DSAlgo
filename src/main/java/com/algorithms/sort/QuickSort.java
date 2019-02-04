@@ -1,9 +1,9 @@
 package com.algorithms.sort;
 
 /*
-Best Case:
-Average Case:
-Worst Case:
+    Best Case:
+    Average Case:
+    Worst Case:
  */
 
 @SuppressWarnings("unused")
