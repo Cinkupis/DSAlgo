@@ -17,17 +17,18 @@ public class BasicCalculator2 {
 
         Integer currNumber = null;
 
-        for (int i = 0; i < exprArray.length; i++) {
-            if (exprArray[i] >= '0' && exprArray[i] <= '9') {
-                if (currNumber == null) {
-                    currNumber = exprArray[i] - '0';
+        int index = 0;
+        while (index < operators.size()) {
+            if (operators.get(index) == '*' || operators.get(index) == '/') {
+                if (operators.get(index) == '*') {
+                    numbers.set(index, numbers.get(index) * numbers.get(index + 1));
                 } else {
-                    currNumber = currNumber * 10 + exprArray[i] - '0';
+                    numbers.set(index, (int) numbers.get(index) / numbers.get(index + 1));
                 }
+                numbers.remove(index + 1);
+                operators.remove(index);
             } else {
-                numbers.add(currNumber);
-                currNumber = null;
-                operators.add(exprArray[i]);
+                index++;
             }
         }
 
