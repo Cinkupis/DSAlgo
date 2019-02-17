@@ -27,15 +27,12 @@ public class WordSearch {
             return false;
         }
 
-        // "mark" as visited
         board[y][x] ^= 256;
-
         boolean wordExists = exist(board, y, x + 1, letterArray, index + 1)
                 || exist(board, y, x - 1, letterArray, index + 1)
                 || exist(board, y + 1, x, letterArray, index + 1)
                 || exist(board, y - 1, x, letterArray, index + 1);
 
-        // "unmark"
         board[y][x] ^= 256;
         return wordExists;
     }

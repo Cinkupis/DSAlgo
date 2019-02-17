@@ -6,9 +6,8 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class ValidSudoku {
     public boolean isValidSudoku(char[][] board) {
-        Set<Character> duplicateCheck = new HashSet<Character>();
         for (int i = 0; i < 9; i++) {
-            duplicateCheck = new HashSet<Character>();
+            Set<Character> duplicateCheck = new HashSet<>();
             for (int j = 0; j < 9; j++) {
                 if (board[i][j] != '.') {
                     if (duplicateCheck.contains(board[i][j])) {
@@ -21,7 +20,7 @@ public class ValidSudoku {
         }
 
         for (int i = 0; i < 9; i++) {
-            duplicateCheck = new HashSet<Character>();
+            Set<Character> duplicateCheck = new HashSet<>();
             for (int j = 0; j < 9; j++) {
                 if (board[j][i] != '.') {
                     if (duplicateCheck.contains(board[j][i])) {
@@ -36,7 +35,7 @@ public class ValidSudoku {
         int jump = 3;
         for (int i = 0; i < 9; i = i + jump) {
             for (int j = 0; j < 9; j = j + jump) {
-                duplicateCheck = new HashSet<Character>();
+                Set<Character> duplicateCheck = new HashSet<>();
                 for (int x = i; x < i + jump; x++) {
                     for (int y = j; y < j + jump; y++) {
                         if (board[x][y] != '.') {

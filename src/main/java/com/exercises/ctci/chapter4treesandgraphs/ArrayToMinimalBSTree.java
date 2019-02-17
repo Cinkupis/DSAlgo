@@ -5,6 +5,10 @@ import com.datastructures.trees.nodes.TreeNode;
 @SuppressWarnings("unused")
 public class ArrayToMinimalBSTree {
 
+    public TreeNode convert(int[] array) {
+        return addNode(0, array.length - 1, array);
+    }
+
     private TreeNode addNode(int minIndex, int maxIndex, int[] array) {
         if (maxIndex < minIndex) {
             return null;
@@ -21,9 +25,5 @@ public class ArrayToMinimalBSTree {
         }
 
         return node;
-    }
-
-    public TreeNode convert(int[] array) {
-        return addNode(0, array.length - 1, array);
     }
 }

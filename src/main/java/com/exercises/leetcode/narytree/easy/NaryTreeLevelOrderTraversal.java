@@ -24,8 +24,9 @@ public class NaryTreeLevelOrderTraversal {
             for (int i = 0; i < length; i++) {
                 NaryNode curr = queue.remove();
                 currLevel.add(curr.val);
-                for (NaryNode c : curr.children)
+                for (NaryNode c : curr.children) {
                     queue.add(c);
+                }
             }
 
             traversal.add(currLevel);

@@ -9,11 +9,12 @@ package com.exercises.ctci.chapter1arraysandstrings;
 @SuppressWarnings("unused")
 public class StringCompression {
 
-    private String compressString(String uncompressed) {
+    private String compressString(String input) {
+        String uncompressed = input.toLowerCase();
         if (uncompressed == null || uncompressed.isEmpty() || uncompressed.length() <= 2) {
             return uncompressed;
         }
-        uncompressed = uncompressed.toLowerCase();
+        
         StringBuilder compressed = new StringBuilder();
         int counter = 0;
         for (int i = 0; i < uncompressed.length(); i++) {

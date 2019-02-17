@@ -31,22 +31,7 @@ public class BasicCalculator2 {
                 index++;
             }
         }
-
         numbers.add(currNumber);
-
-        for (int i = 0; i < operators.size(); i++) {
-            if (operators.get(i) == '*') {
-                numbers.set(i, numbers.get(i) * numbers.get(i + 1));
-                numbers.remove(i + 1);
-                operators.remove(i);
-                i--;
-            } else if (operators.get(i) == '/') {
-                numbers.set(i, (int) numbers.get(i) / numbers.get(i + 1));
-                numbers.remove(i + 1);
-                operators.remove(i);
-                i--;
-            }
-        }
 
         if (operators.size() == 0) {
             return numbers.get(0);

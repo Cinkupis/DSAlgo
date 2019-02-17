@@ -1,7 +1,7 @@
 package com.exercises.leetcode.arrays.hard;
 
+@SuppressWarnings("unused")
 public class SerializeDeserializeArrayStrings {
-
     public static String serialize(String[] arrayOfStrings) {
         StringBuilder output = new StringBuilder();
 
@@ -61,7 +61,7 @@ public class SerializeDeserializeArrayStrings {
                 }
                 parsingNum = false;
                 nextWordLenght = Integer.valueOf(num.toString());
-                num = new StringBuilder(); // Emptying.
+                num = new StringBuilder();
                 i++;
             } else {
                 while (nextWordLenght > 0) {
@@ -72,7 +72,7 @@ public class SerializeDeserializeArrayStrings {
                 parsingDelimiter = true;
                 output[wordCount] = sb.toString();
                 wordCount++;
-                sb = new StringBuilder(); // Emptying.
+                sb = new StringBuilder();
             }
         }
         return output;
@@ -84,13 +84,5 @@ public class SerializeDeserializeArrayStrings {
             sb.append((char) (65 + (26 * Math.random())));
         }
         return sb.toString();
-    }
-
-    public static void main (String[] args){
-        String[] a = {"this", "is", "very", "nice", "I", "like"};
-        String s = serialize(a);
-        String[] output = deserialize(s, a.length);
-        for (String out : output)
-            System.out.print(out + " ");
     }
 }

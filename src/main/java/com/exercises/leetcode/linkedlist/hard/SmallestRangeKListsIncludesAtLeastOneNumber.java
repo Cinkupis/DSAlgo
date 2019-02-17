@@ -41,31 +41,6 @@ public class SmallestRangeKListsIncludesAtLeastOneNumber {
         }
     }
 
-    public static void main(String[] args) {
-        List<List> lists = new ArrayList<>();
-        List list1 = new ArrayList();
-        list1.add(4);
-        list1.add(10);
-        list1.add(15);
-        list1.add(24);
-        list1.add(26);
-        List list2 = new ArrayList();
-        list2.add(0);
-        list2.add(9);
-        list2.add(12);
-        list2.add(20);
-        List list3 = new ArrayList();
-        list3.add(5);
-        list3.add(18);
-        list3.add(22);
-        list3.add(30);
-        lists.add(list1);
-        lists.add(list2);
-        lists.add(list3);
-        Result result = new SmallestRangeKListsIncludesAtLeastOneNumber().findCoveringRange(lists);
-        System.out.println(result.startRange + ", " + result.endRange);
-    }
-
     public Result findCoveringRange(List<List> lists) {
         Result result;
         int start = -1;

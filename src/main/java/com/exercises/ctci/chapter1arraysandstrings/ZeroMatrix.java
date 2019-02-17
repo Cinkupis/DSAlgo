@@ -6,9 +6,6 @@ package com.exercises.ctci.chapter1arraysandstrings;
 @SuppressWarnings("unused")
 public class ZeroMatrix {
 
-    private final static byte N = 5;
-    private final static byte M = 10;
-
     private int[][] zeroOutRowColumn(int[][] matrix) {
         boolean rowHasZero = false;
         boolean colHasZero = false;
@@ -27,27 +24,34 @@ public class ZeroMatrix {
             }
         }
 
-        for (int i = 1; i < matrix.length; i++)
+        for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
                     matrix[i][0] = 0;
                     matrix[0][j] = 0;
                 }
             }
+        }
 
-        for (int i = 1; i < matrix.length; i++)
-            if (matrix[i][0] == 0)
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i][0] == 0) {
                 nullifyRow(matrix, i);
+            }
+        }
 
-        for (int j = 1; j < matrix[0].length; j++)
-            if (matrix[0][j] == 0)
+        for (int j = 1; j < matrix[0].length; j++) {
+            if (matrix[0][j] == 0) {
                 nullifyColumn(matrix, j);
+            }
+        }
 
-        if (rowHasZero)
+        if (rowHasZero) {
             nullifyRow(matrix, 0);
+        }
 
-        if (colHasZero)
+        if (colHasZero) {
             nullifyColumn(matrix, 0);
+        }
         return matrix;
     }
 

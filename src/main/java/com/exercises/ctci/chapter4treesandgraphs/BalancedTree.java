@@ -5,6 +5,10 @@ import com.datastructures.trees.nodes.TreeNode;
 @SuppressWarnings("unused")
 public class BalancedTree {
 
+    public boolean isBalanced(TreeNode root) {
+        return checkHeight(root) != Integer.MIN_VALUE;
+    }
+
     private int checkHeight(TreeNode node) {
         if (node == null) {
             return -1;
@@ -26,9 +30,5 @@ public class BalancedTree {
         } else {
             return Math.max(leftHeight, rightHeight) + 1;
         }
-    }
-
-    public boolean isBalanced(TreeNode root) {
-        return checkHeight(root) != Integer.MIN_VALUE;
     }
 }

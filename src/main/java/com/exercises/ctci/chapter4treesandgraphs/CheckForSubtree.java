@@ -8,28 +8,6 @@ import java.util.Queue;
 @SuppressWarnings("unused")
 public class CheckForSubtree {
 
-    private boolean isSubTree(TreeNode root, TreeNode subRoot) {
-        if (root == null ^ subRoot == null || !root.equals(subRoot)) {
-            return false;
-        }
-
-        if (root.left != null || subRoot.left != null) {
-            boolean left = isSubTree(root.left, subRoot.left);
-            if (!left) {
-                return false;
-            }
-        }
-
-        if (root.right != null || subRoot.right != null) {
-            boolean right = isSubTree(root.right, subRoot.right);
-            if (!right) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     public boolean checkSubTree(TreeNode root, TreeNode subRoot) {
         if (root == null) {
             return false;
@@ -57,5 +35,27 @@ public class CheckForSubtree {
         }
 
         return false;
+    }
+
+    private boolean isSubTree(TreeNode root, TreeNode subRoot) {
+        if (root == null ^ subRoot == null || !root.equals(subRoot)) {
+            return false;
+        }
+
+        if (root.left != null || subRoot.left != null) {
+            boolean left = isSubTree(root.left, subRoot.left);
+            if (!left) {
+                return false;
+            }
+        }
+
+        if (root.right != null || subRoot.right != null) {
+            boolean right = isSubTree(root.right, subRoot.right);
+            if (!right) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

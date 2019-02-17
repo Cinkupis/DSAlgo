@@ -11,29 +11,29 @@ public class SingleNumber {
         return element;
     }
 
-    public int getElementAppearedOnce(int[] arr, int start, int end) {
-        if (start > end) {
+    public int getElementAppearedOnce(int[] array, int startIndex, int endIndex) {
+        if (startIndex > endIndex) {
             return -1;
         }
 
-        // The number that appears once is at the end
-        if (start == end) {
-            return arr[start];
+        // The number that appears once is at the endIndex
+        if (startIndex == endIndex) {
+            return array[startIndex];
         }
-        int mid = (start + end) / 2;
-        if (mid % 2 == 0) {
+        int midIndex = (startIndex + endIndex) / 2;
+        if (midIndex % 2 == 0) {
             //EVEN
-            if (arr[mid] == arr[mid + 1]) {
-                return getElementAppearedOnce(arr, mid + 2, end);
+            if (array[midIndex] == array[midIndex + 1]) {
+                return getElementAppearedOnce(array, midIndex + 2, endIndex);
             } else {
-                return getElementAppearedOnce(arr, start, mid);
+                return getElementAppearedOnce(array, startIndex, midIndex);
             }
         } else {
             //ODD
-            if (arr[mid] == arr[mid - 1]) {
-                return getElementAppearedOnce(arr, mid + 1, end);
+            if (array[midIndex] == array[midIndex - 1]) {
+                return getElementAppearedOnce(array, midIndex + 1, endIndex);
             } else {
-                return getElementAppearedOnce(arr, start, mid);
+                return getElementAppearedOnce(array, startIndex, midIndex);
             }
         }
     }

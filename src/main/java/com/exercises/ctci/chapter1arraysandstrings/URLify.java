@@ -7,24 +7,24 @@ package com.exercises.ctci.chapter1arraysandstrings;
  */
 @SuppressWarnings("unused")
 public class URLify {
-    private String urlify(char[] originalString, int actualLength) {
+    private String urlify(char[] original, int actualLength) {
         int spaceCount = 0;
         for (int i = 0; i < actualLength; i++) {
-            if (originalString[i] == ' ') {
+            if (original[i] == ' ') {
                 spaceCount++;
             }
         }
         int index = actualLength + spaceCount * 2;
         for (int i = actualLength - 1; i >= 0; i--) {
-            if (originalString[i] == ' ') {
-                originalString[--index] = '0';
-                originalString[--index] = '2';
-                originalString[--index] = '%';
+            if (original[i] == ' ') {
+                original[--index] = '0';
+                original[--index] = '2';
+                original[--index] = '%';
             } else {
-                originalString[--index] = originalString[i];
+                original[--index] = original[i];
             }
         }
 
-        return String.copyValueOf(originalString);
+        return String.copyValueOf(original);
     }
 }
