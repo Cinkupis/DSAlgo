@@ -11,7 +11,6 @@ public class HeapSort {
     public void sort(int[] array) {
 
         int middle = array.length / 2 - 1;
-        // Build heap (rearrange array)
         for (int i = middle; i >= 0; i--) {
             heapify(array, array.length, i);
         }

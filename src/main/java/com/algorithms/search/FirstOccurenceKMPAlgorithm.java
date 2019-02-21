@@ -1,4 +1,4 @@
-package com.algorithms.strings;
+package com.algorithms.search;
 
 @SuppressWarnings("unused")
 public class FirstOccurenceKMPAlgorithm {

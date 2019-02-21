@@ -16,11 +16,6 @@ public abstract class Heap<T extends Comparable<T>> {
         this.size = 0;
     }
 
-    /**
-     * Inserts an element into the heap.
-     * @param data item to insert.
-     * @throws Exception
-    **/
     public void push(T data) throws Exception {
         if(this.size >= this.maxSize) {
             throw new Exception();
@@ -30,11 +25,6 @@ public abstract class Heap<T extends Comparable<T>> {
         this.size++;
     }
 
-    /**
-     * Returns the current extreme value within the heap.
-     * @return object representing current extreme value.
-     * @throws Exception
-     */
     public T get() throws Exception {
         if(isEmpty()) {
             throw new Exception();
@@ -42,11 +32,6 @@ public abstract class Heap<T extends Comparable<T>> {
         return this.heap[0];
     }
 
-    /**
-     * Returns and removes the current extreme value from within the heap, replacing the old extreme with the next candidate.
-     * @return object representing extreme value.
-     * @throws Exception
-     */
     public T pop() throws Exception {
         if(isEmpty()) {
             throw new Exception();
@@ -59,9 +44,6 @@ public abstract class Heap<T extends Comparable<T>> {
         return extreme;
     }
 
-    /**
-     * 'Bubbles-up' an item from the bottom of the heap (tail of the array) into it's appropriate spot, following the rules of a Min Heap.
-     */
     protected void upHeap() {
         int currentIndex = this.size;
         while(currentIndex > 0) {
@@ -74,9 +56,6 @@ public abstract class Heap<T extends Comparable<T>> {
         }
     }
 
-    /**
-     * Percolates-down an item from the top of the heap (head of the array) into it's appropriate spot, following the rules of the underlying heap class.
-     */
     protected void downHeap() {
         int currentIndex = 0;
         for (int left = (2 * currentIndex) + 1; left < size; left = (2 * currentIndex) + 1) {
@@ -92,37 +71,12 @@ public abstract class Heap<T extends Comparable<T>> {
         }
     }
 
-    /**
-     * Comparison method used with up-heap operations, to be overridden within inheriting class.
-     * @param childIndex first index to use within comparison.
-     * @param parentIndex second index to use within comparison.
-     * @return true or false based on the inheriting class' implementation.
-     */
     protected abstract boolean upHeapComparator(int childIndex, int parentIndex);
 
-    /**
-     * Comparison method used with down-heap operations, to be overridden within inheriting class.
-     * @param childIndex first index to use within comparison.
-     * @param parentIndex second index to use within comparison.
-     * @return true or false based on the inheriting class' implementation.
-     */
     protected abstract boolean downHeapComparator(int childIndex, int parentIndex);
 
-    /**
-     * Comparison method used when finding an extreme value, to be overridden within inheriting class.
-     * @param childIndex first index to use within comparison.
-     * @param parentIndex second index to use within comparison.
-     * @return true or false based on the inheriting class' implementation.
-     */
     protected abstract boolean extremeComparator(int childIndex, int parentIndex);
 
-    /**
-     * Compares two values within the underlying heap array and returns the index of the maximum.
-     * @param childIndex index of first item to use in comparison.
-     * @param parentIndex index of second item to use in comparison.
-     * @return integer representing index of the maximum value from the comparison.
-     * @throws IndexOutOfBoundsException
-     */
     protected int findExtremeIndex(int childIndex, int parentIndex) throws IndexOutOfBoundsException {
         if(childIndex >= this.size || parentIndex >= this.size) {
             throw new IndexOutOfBoundsException();
@@ -130,14 +84,8 @@ public abstract class Heap<T extends Comparable<T>> {
         return (extremeComparator(childIndex, parentIndex)) ? childIndex : parentIndex;
     }
 
-    /**
-     * Quick method used to swap two items within the underlying heap array.
-     * @param childIndex index of first item to swap.
-     * @param parentIndex index of second item to swap.
-     * @throws IndexOutOfBoundsException
-     */
     protected void swap(int childIndex, int parentIndex) throws IndexOutOfBoundsException {
-        if(childIndex > this.size || childIndex > this.size) {
+        if(childIndex > this.size || parentIndex > this.size) {
             throw new IndexOutOfBoundsException();
         }
         T temp = this.heap[childIndex];
@@ -145,44 +93,22 @@ public abstract class Heap<T extends Comparable<T>> {
         this.heap[parentIndex] = temp;
     }
 
-    /**
-     * Compares two values.
-     * @param x first value to use in comparison.
-     * @param y second value to use in comparison.
-     * @return
-     */
     protected int compare(T x, T y) {
         return x.compareTo(y);
     }
 
-    /**
-     * Returns the heap in array form.
-     * @return array of generic objects representing the heap.
-     */
     public List<T> getHeap() {
         return List.of(this.heap);
     }
 
-    /**
-     * Returns the allotted maximum size of the underlying heap array.
-     * @return an integer representing maximum size of the heap.
-     */
     public int getMaxSize() {
         return this.maxSize;
     }
 
-    /**
-     * Returns the current number of elements present within the underlying heap array.
-     * @return an integer representing the current number of elements within the heap.
-     */
     public int getSize() {
         return this.size;
     }
 
-    /**
-     * Determines whether or not the heap contains any elements.
-     * @return true if the heap is empty, false if otherwise.
-     */
     public boolean isEmpty() {
         return this.size == 0;
     }

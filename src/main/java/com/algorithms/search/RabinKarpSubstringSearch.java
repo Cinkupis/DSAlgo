@@ -28,23 +28,28 @@ public class RabinKarpSubstringSearch {
         return ((currHash - prev) / PRIME) + (long)(Math.pow(PRIME * 1.0, pow) * next);
     }
 
-    public boolean contains(String original, String searchString) {
-        if (original == null || searchString == null || original.isEmpty() || searchString.isEmpty() || original.length() < searchString.length()) {
+    public boolean contains(String originalText, String originalPattern) {
+        if (originalText == null || originalPattern == null || originalText.isEmpty() || originalPattern.isEmpty() || originalText.length() < originalPattern.length()) {
             return false;
         }
+        String text;
+        String pattern;
 
         if (this.ignoreCase) {
-            original = original.toLowerCase();
-            searchString = searchString.toLowerCase();
+            text = originalText.toLowerCase();
+            pattern = originalPattern.toLowerCase();
+        } else {
+            text = originalText;
+            pattern = originalPattern;
         }
 
-        char[] searchChars = searchString.toCharArray();
+        char[] searchChars = pattern.toCharArray();
         long prevHash = -1;
         char firstLetter = 0;
         long searchHash = hash(searchChars);
         long currentHash = 0;
-        for (int i = 0; i < original.length() - searchChars.length + 1; i++) {
-            char[] current = original.substring(i, searchChars.length + i).toCharArray();
+        for (int i = 0; i < text.length() - searchChars.length + 1; i++) {
+            char[] current = text.substring(i, searchChars.length + i).toCharArray();
             if (prevHash == -1) {
                 currentHash = hash(current);
             } else {

@@ -152,14 +152,6 @@ public class MySinglyLinkedList<E extends Object> {
         }
     }
 
-    public E returnKthToLast(int k) {
-        if (size - k >= 0) {
-            return this.get(size - k);
-        } else {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-    }
-
     public E returnKthToLastUnknownSize(int k) {
         ListNode p1 = this.head;
         ListNode p2 = this.head;

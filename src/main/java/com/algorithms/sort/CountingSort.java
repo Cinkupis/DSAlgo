@@ -44,14 +44,4 @@ public class CountingSort {
 
         return sorted;
     }
-
-    public static void main(String[] args) {
-
-        int [] unsorted = {1, 5, 10, 10, 5, 1};
-        System.out.println("Before: " + Arrays.toString(unsorted));
-
-        int [] sorted = sort(unsorted);
-        System.out.println("After:  " + Arrays.toString(sorted));
-
-    }
 }
