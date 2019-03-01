@@ -176,7 +176,7 @@ public class MySinglyLinkedList<E extends Object> {
             return;
         }
         ListNode current = this.head;
-        while (current.next != toDelete && current != null) {
+        while (current != null && current.next != toDelete) {
             current = current.next;
         }
 

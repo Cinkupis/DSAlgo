@@ -28,7 +28,7 @@ public class IntersectionOfTwoLinkedLists {
         return null;
     }
 
-    private ListNode moveNStep (ListNode node,int n){
+    private ListNode moveNStep(ListNode node,int n){
         while (n != 0) {
             node = node.next;
             n--;
@@ -36,7 +36,7 @@ public class IntersectionOfTwoLinkedLists {
         return node;
     }
 
-    private int calcLen (ListNode node){
+    private int calcLen(ListNode node){
         int len = 0;
         while (node != null) {
             len++;

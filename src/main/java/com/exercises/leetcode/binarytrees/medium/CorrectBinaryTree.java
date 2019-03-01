@@ -22,7 +22,7 @@ public class CorrectBinaryTree {
                 }
             }
             prev = root;
-            correctBSTUtil( root.right);
+            correctBSTUtil(root.right);
         }
     }
 

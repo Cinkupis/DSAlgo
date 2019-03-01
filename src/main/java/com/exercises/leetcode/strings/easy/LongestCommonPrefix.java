@@ -2,17 +2,19 @@ package com.exercises.leetcode.strings.easy;
 
 @SuppressWarnings("unused")
 public class LongestCommonPrefix {
-    public String longestCommonPrefix(String[] strs) {
-        if(strs == null || strs.length == 0) {
+    public String longestCommonPrefix(String[] listOfStrings) {
+        if (listOfStrings == null || listOfStrings.length == 0) {
             return "";
         }
-        String startsWith = strs[0];
-        int i = 1;
-        while(i < strs.length){
-            while(strs[i].indexOf(startsWith) != 0)
-                startsWith = startsWith.substring(0, startsWith.length() - 1);
-            i++;
+        String commonPrefix = listOfStrings[0];
+        int wordInList = 1;
+        while (wordInList < listOfStrings.length) {
+            while (listOfStrings[wordInList].indexOf(commonPrefix) != 0) {
+                commonPrefix = commonPrefix.substring(0, commonPrefix.length() - 1);
+            }
+            wordInList++;
         }
-        return startsWith;
+
+        return commonPrefix;
     }
 }

@@ -1,4 +1,4 @@
-package com.exercises.leetcode.strings.easy;
+package com.exercises.leetcode.mathpuzzles.easy;
 
 @SuppressWarnings("unused")
 public class ReverseInteger {
