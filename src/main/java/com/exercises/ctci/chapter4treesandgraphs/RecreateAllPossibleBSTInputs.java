@@ -52,17 +52,4 @@ public class RecreateAllPossibleBSTInputs {
 
         return possibleInputs;
     }
-
-    private void print(ArrayList<LinkedList<Integer>> list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print("{");
-            for (int j = 0; j < list.get(i).size(); j++) {
-                System.out.print(list.get(i).get(j));
-                if (j + 1 != list.get(i).size()) {
-                    System.out.print(",");
-                }
-            }
-            System.out.println("}");
-        }
-    }
 }

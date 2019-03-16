@@ -7,7 +7,7 @@ import java.util.HashMap;
 @SuppressWarnings("unused")
 public class CountPathsWithSum {
     public int solutionOofN(TreeNode node, int targetSum) {
-        return pathsWithSumOofN(node, targetSum, 0, new HashMap<Integer, Integer>());
+        return pathsWithSumOofN(node, targetSum, 0, new HashMap<>());
     }
 
     public int solutionOofNLogN(TreeNode root, int targetSum) {
