@@ -7,7 +7,6 @@ import java.util.Queue;
 
 @SuppressWarnings("unused")
 public class CheckForSubtree {
-
     public boolean checkSubTree(TreeNode root, TreeNode subRoot) {
         if (root == null) {
             return false;
@@ -38,7 +37,7 @@ public class CheckForSubtree {
     }
 
     private boolean isSubTree(TreeNode root, TreeNode subRoot) {
-        if (root == null ^ subRoot == null || !root.equals(subRoot)) {
+        if (root == null ^ subRoot == null || root.value != subRoot.value) {
             return false;
         }
 
