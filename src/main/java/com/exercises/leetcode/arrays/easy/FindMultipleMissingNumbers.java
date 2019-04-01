@@ -1,6 +1,5 @@
 package com.exercises.leetcode.arrays.easy;
 
-import java.util.Arrays;
 import java.util.BitSet;
 
 @SuppressWarnings("unused")

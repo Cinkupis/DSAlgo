@@ -66,7 +66,7 @@ public class OpenTheLock {
                         temp.add(s2);
                 }
             }
-            level ++;
+            level++;
             begin = temp;
         }
         return -1;
