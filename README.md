@@ -1,1 +1,3 @@
 # Data Structures and Algorithms
+
+This repository is being constantly expanded with Data Structures & Algorithms exercises. These exercises help me improve and solidify my fundamentals of computer science. This is also a place where I like to challenge myself with algorithmic and creative exercises, which I believe help me improve my problem solving skills, which is an important skill to have for any software engineer.
