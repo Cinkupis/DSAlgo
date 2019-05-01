@@ -1,4 +1,4 @@
-package com.exercises.leetcode.mathpuzzles.easy;
+package com.exercises.leetcode.strings.easy;
 
 @SuppressWarnings("unused")
 public class RomanToInteger {
